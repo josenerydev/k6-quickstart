@@ -1,0 +1,21 @@
+k6 run script.js
+
+k6 run --vus 10 --duration 30s script.js
+
+
+# create a `package.json` file
+npm init --yes
+
+# install the k6 types as dev dependency
+npm install --save-dev @types/k6
+
+
+# convert postman collection to k6 test
+postman-to-k6 test-api.json -e env.json -o k6-script.js
+npx postman-to-k6 Github_API_Requests.postman_collection.json -o k6-script.js
+
+# run load test
+k6 run --vus 100 --duration 5m k6-script.js
+
+https://k6.io/docs/javascript-api/k6-http/response/
+https://k6.io/blog/load-testing-with-postman-collections/
